@@ -25,7 +25,7 @@ struct less_second {
     }
 };
 
-string data[10][10][10];
+string data[10][10][10],database[10][10];
 int t_transaction,maximum_purchase_item,minimum_support;
 
 int main()
@@ -87,7 +87,52 @@ int main()
         cout << it->first << " : " << it->second ;
         cout << ((i1+1 == order.size())? " }" : " , ");
     }
-    cout << endl;
+    cout << endl << endl;
+    vector<pair<string,int> >order_set;
+    cout << "Order the item table according to priority :" << endl;
+    cout << "----------------------------------------------------|\n";
+    cout << " TID   |   List of items ID's   |   Order items     |\n";
+    cout << "----------------------------------------------------|\n";
+    for(int i = 0, j2 ; i < t_transaction ; i++){
+        cout << "  " << data[i][0][0] << " ";
+        order_set.clear();
+        for(int j = 1 ; j <= maximum_purchase_item; j++ ){
+        cout << ((j==1)?"  |       ":" ") << data[i][i+1][j] ;
+        order_set.push_back(pair<string,int>(data[i][i+1][j],sorting_data.find(data[i][i+1][j])->second));
+        }
+        cout << "   \t|   ";
+        sort(order_set.begin(),order_set.end(), less_second<string, int>());
+        vector<pair<string, int> >:: iterator it = order_set.begin();
+         j2 = 0;
+        for(;it != order_set.end(); it++,j2++){
+             cout << it->first << " ";
+             database[i][j2] = it->first;
+        }
+        database[i][j2] = "*";
+        cout << " \t \n----------------------------------------------------|\n";
+    }
+    for(int i1 = 0; i1 < t_transaction ; i1++){
+    cout << endl << "For Trnsaction : ";
+      for(int j1 = 0; database[i1][j1] != "*" ; j1++){
+        cout << database[i1][j1] << " ";
+      }
+      cout << endl;
+      cout << "  FP - Tree : \n";
+      cout << "\t\t\t\t\t null or { }   \n";
+      cout << "\t\t\t\t\t  /\n";
+      cout << "\t\t\t\t\t /\n";
+      cout << "\t\t\t\t\t/\n";
+      for(int j1 = 0; database[i1][j1] != "*" ; j1++){
+          string sd = database[i1][j1];
+            if(!sd.empty()){
+        cout << "\t\t\t\t      " << sd << " \n";
+        cout << "\t\t\t\t      /\n";
+        cout << "\t\t\t\t     /\n";
+        cout << "\t\t\t\t    /\n";
+            }
+      }
+      cout << endl;
+    }
     return 0;
 }
 

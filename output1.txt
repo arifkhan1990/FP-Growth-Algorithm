@@ -2,32 +2,191 @@ Transaction Number : 9
 Maximum Purchase Item : 4
 Minimum Support : 2
 
-Purchase Data (Database):
-T1 :   I1 I2 I5
-T2 :   I2 I4
-T3 :   I2 I3
-T4 :   I1 I2 I3
-T5 :   I1 I3
-T6 :   I2 I3
-T7 :   I1 I3
+Purchase Data (Database): 
+T1 :   I1 I2 I5 
+T2 :   I2 I4  
+T3 :   I2 I3  
+T4 :   I1 I2 I3 
+T5 :   I1 I3  
+T6 :   I2 I3  
+T7 :   I1 I3  
 T8 :   I1 I2 I3 I5
-T9 :   I1 I2 I3
+T9 :   I1 I2 I3 
 
 Freguency Of Occurrence :
 ------------------------------------|
- Item   |  Frequency |    Priority  |
+ Item   |  Frequency | 	  Priority  |
 ------------------------------------|
-  I1    |      6     |       2      |
+  I1    |      6     |	     2	    |
 ------------------------------------|
-  I2    |      7     |       3      |
+  I2    |      7     |	     3	    |
 ------------------------------------|
-  I3    |      7     |       1      |
+  I3    |      7     |	     1	    |
 ------------------------------------|
-  I4    |      1     |       5      |
+  I4    |      1     |	     5	    |
 ------------------------------------|
-  I5    |      2     |       4      |
+  I5    |      2     |	     4	    |
 ------------------------------------|
 
-Frequent item list of 'L'  :
+Frequent item list of 'L'  : 
  L = { I2 : 7 , I3 : 7 , I1 : 6 , I5 : 2 , I4 : 1 }
+
+Order the item table according to priority :
+----------------------------------------------------|
+ TID   |   List of items ID's   |   Order items     |
+----------------------------------------------------|
+  T1   |       I1 I2 I5    	|    I2 I1 I5  	 
+----------------------------------------------------|
+  T2   |       I2 I4     	|     I2 I4  	 
+----------------------------------------------------|
+  T3   |       I2 I3     	|     I2 I3  	 
+----------------------------------------------------|
+  T4   |       I1 I2 I3    	|    I2 I3 I1  	 
+----------------------------------------------------|
+  T5   |       I1 I3     	|     I3 I1  	 
+----------------------------------------------------|
+  T6   |       I2 I3     	|     I2 I3  	 
+----------------------------------------------------|
+  T7   |       I1 I3     	|     I3 I1  	 
+----------------------------------------------------|
+  T8   |       I1 I2 I3 I5   	|   I2 I3 I1 I5  	 
+----------------------------------------------------|
+  T9   |       I1 I2 I3    	|    I2 I3 I1  	 
+----------------------------------------------------|
+
+For Trnsaction :  I2 I1 I5 
+  FP - Tree : 
+					 null or { }   
+					  /
+					 /
+					/
+				    I2 : 1 
+				      /
+				     /
+				    /
+				I1 : 1 
+			          /
+			         /
+			        /
+			    I5 : 1 
+
+
+For Trnsaction :   I2 I4 
+  FP - Tree : 
+					 null or { }   
+					  /
+					 /
+					/
+				    I2 : 2 
+				      /
+				     /
+				    /
+				I4 : 1 
+
+
+For Trnsaction :   I2 I3 
+  FP - Tree : 
+					 null or { }   
+					  /
+					 /
+					/
+				    I2 : 3 
+				      /
+				     /
+				    /
+				I3 : 1 
+
+
+For Trnsaction :  I2 I3 I1 
+  FP - Tree : 
+					 null or { }   
+					  /
+					 /
+					/
+				    I2 : 4 
+				      /
+				     /
+				    /
+				I3 : 2 
+			          /
+			         /
+			        /
+			    I1 : 2 
+
+
+For Trnsaction :   I3 I1 
+  FP - Tree : 
+					 null or { }   
+					  /
+					 /
+					/
+				    I3 : 3 
+				      /
+				     /
+				    /
+				I1 : 3 
+
+
+For Trnsaction :   I2 I3 
+  FP - Tree : 
+					 null or { }   
+					  /
+					 /
+					/
+				    I2 : 5 
+				      /
+				     /
+				    /
+				I3 : 4 
+
+
+For Trnsaction :   I3 I1 
+  FP - Tree : 
+					 null or { }   
+					  /
+					 /
+					/
+				    I3 : 5 
+				      /
+				     /
+				    /
+				I1 : 4 
+
+
+For Trnsaction : I2 I3 I1 I5 
+  FP - Tree : 
+					 null or { }   
+					  /
+					 /
+					/
+				    I2 : 6 
+				      /
+				     /
+				    /
+				I3 : 6 
+			          /
+			         /
+			        /
+			    I1 : 5 
+			      /
+			     /
+			    /
+			I5 : 2 
+
+
+For Trnsaction :  I2 I3 I1 
+  FP - Tree : 
+					 null or { }   
+					  /
+					 /
+					/
+				    I2 : 7 
+				      /
+				     /
+				    /
+				I3 : 7 
+			          /
+			         /
+			        /
+			    I1 : 6 
 
